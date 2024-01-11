@@ -14,15 +14,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from photo_task.views import ImagesList, ImagesCreate
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('images/', ImagesList.as_view(), name='image-list'),
-    path('images/random/', ImagesCreate.as_view(), name='image-random'),
+    path('api/', include('photo_task.urls')),
+
 ]
 
 if settings.DEBUG:

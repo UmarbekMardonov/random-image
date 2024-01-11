@@ -10,7 +10,7 @@ from .models import ImageModel
 
 def images_url(img_key):
     url = "https://picsum.photos/200/300"
-    img_name = f"img_{img_key}.png"
+    img_name = f"img_{img_key}.jpg"
     urllib.request.urlretrieve(url, img_name)
 
 
@@ -20,13 +20,13 @@ def download_image():
     # for i in range(100):
     #     random_key = get_random_string(12)
     #     images_url(random_key)
-    #     ImageModel.objects.create(image=f'img_{random_key}.png')  # time = 0:00:00.023
+    #     ImageModel.objects.create(image=f'img_{random_key}.jpg')  # time = 0:00:00.023
     # 2-usul bluk
     # images = []
     # for i in range(100):
     #     random_key = get_random_string(12)
     #     images_url(random_key)
-    #     images.append(ImageModel(image=f'img_{random_key}.png'))  # time = 0:00:00.15
+    #     images.append(ImageModel(image=f'img_{random_key}.jpg'))  # time = 0:00:00.15
     #
     # ImageModel.objects.bulk_create(images)
     threads = []
@@ -36,7 +36,7 @@ def download_image():
         t = threading.Thread(target=images_url, args=(random_key,))
         threads.append(t)
         t.start()
-        images.append(ImageModel(image=f'img_{random_key}.png'))
+        images.append(ImageModel(image=f'img_{random_key}.jpg'))
         for thread in threads:  # time = 0:00:00.16
             thread.join()
 
